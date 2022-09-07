@@ -39,9 +39,9 @@ function returnTodo(todoTitle: string, todoDescription: string) {
 }
 
 function deleteTodo(id: number) {
-  for (const todo of todos.entries()) {
-    if (todo[1].id === id) {
-      todos.splice(todo[0], 1)
+  for (const [index, todo] of todos.entries()) {
+    if (todo.id === id) {
+      todos.splice(index, 1)
       break
     }
   }

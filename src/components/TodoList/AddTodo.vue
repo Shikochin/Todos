@@ -21,10 +21,6 @@ const added = reactive({
 </script>
 
 <style scoped>
-* {
-  font-family: "Cascadia Code", "Microsoft YaHei UI";
-}
-
 #add-todo {
   border-style: dotted;
   border-color: black;

@@ -25,7 +25,6 @@ defineEmits<{
   border-radius: 6px;
   padding: 30px;
   background-color: #F5F5A0FF;
-  font-family: "Cascadia Code", "Microsoft YaHei UI";
   box-shadow: 6px 6px 6px 1px rgba(0, 0, 255, .2);
 }
 
