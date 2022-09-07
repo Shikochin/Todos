@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build VuePress site
+      - name: Build
         run: pnpm build
 
       - name: Deploy to GitHub Pages
