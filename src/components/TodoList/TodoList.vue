@@ -3,11 +3,11 @@
   <TransitionGroup id="todo-list" name="list" tag="div">
     <!--  如果 hideCheckedTodos 为 true，则遍历 todoChecked === false 的 Todo 的 todos 数组  -->
     <Todo v-for="todo of (todoStore.hideCheckedTodos ? uncheckedTodos : todoStore.todos)"
-          :id="todo.id"
+          :todoId="todo.todoId"
           :todo-checked="todo.todoChecked"
           :todo-description="todo.todoDescription"
           :todo-title="`${todo.todoTitle}`"
-          :key="todo.id"
+          :key="todo.todoId"
     ></Todo>
     <AddTodo key="0"></AddTodo>
   </TransitionGroup>

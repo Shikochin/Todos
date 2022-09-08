@@ -19,7 +19,7 @@ export const useStore = defineStore({
         addTodo(todoTitle: string, todoDescription: string) {
             if (todoTitle) {
                 this.todos.push({
-                    id: Date.now(),
+                    todoId: Date.now(),
                     todoChecked: false,
                     todoTitle,
                     todoDescription
@@ -29,7 +29,7 @@ export const useStore = defineStore({
         },
         checkTodo(id: number) {
             for (const todo of this.todos) {
-                if (todo.id === id) {
+                if (todo.todoId === id) {
                     todo.todoChecked = !todo.todoChecked
                     break
                 }
@@ -38,7 +38,7 @@ export const useStore = defineStore({
         },
         deleteTodo(id: number) {
             for (const [index, todo] of this.todos.entries()) {
-                if (todo.id === id) {
+                if (todo.todoId === id) {
                     this.todos.splice(index, 1)
                     break
                 }
@@ -47,7 +47,7 @@ export const useStore = defineStore({
         },
         pinTodo(id: number) {
             for (const [index, todo] of this.todos.entries()) {
-                if (todo.id === id) {
+                if (todo.todoId === id) {
                     const deletedTodo = this.todos.splice(index, 1)[0]
                     this.todos.unshift(deletedTodo)
                     break

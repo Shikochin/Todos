@@ -1,8 +1,8 @@
 <template>
   <div class="todos">
     <!--  切换是否完成  -->
-    <a v-if="todoChecked" class="check" @click="todoStore.checkTodo(id)">✅ Checked</a>
-    <a class="pin" @click="todoStore.pinTodo(id)">📌 Pin</a>
+    <a v-if="todoChecked" class="check" @click="todoStore.checkTodo(todoId)">✅ Checked</a>
+    <a class="pin" @click="todoStore.pinTodo(todoId)">📌 Pin</a>
     <!--  根据是否完成切换 h1 样式  -->
     <h1 :style="{
     textDecoration: todoChecked
@@ -11,8 +11,8 @@
     }">{{ todoTitle }}</h1>
     <p>{{ todoDescription || todoTitle }}</p>
     <!--  切换是否完成  -->
-    <a v-if="!todoChecked" class="check" @click="todoStore.checkTodo(id)">✏️ Check</a>
-    <a class="delete" @click="todoStore.deleteTodo(id)">❌ Delete</a>
+    <a v-if="!todoChecked" class="check" @click="todoStore.checkTodo(todoId)">✏️ Check</a>
+    <a class="delete" @click="todoStore.deleteTodo(todoId)">❌ Delete</a>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ const todoStore = useStore()
 
 // 定义 Todo 接口
 interface Todo {
-  id: number,
+  todoId: number,
   todoTitle: string,
   todoDescription: string,
   todoChecked: boolean
