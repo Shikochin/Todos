@@ -4,7 +4,7 @@
       <input v-model.lazy="added.todoTitle" placeholder="Todo title (required)" required type="text">
     </h1>
     <textarea v-model.lazy="added.todoDescription" placeholder="Todo description"></textarea>
-    <a id="insert" @click="$emit('return-todo', added.todoTitle, added.todoDescription)">Insert</a>
+    <a id="insert" @click="$emit('return-todo', added.todoTitle, added.todoDescription)">✒️ Insert</a>
   </div>
 </template>
 

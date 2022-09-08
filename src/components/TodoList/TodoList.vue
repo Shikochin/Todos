@@ -2,12 +2,15 @@
   <TransitionGroup id="todo-list" name="list" tag="div">
     <Todo v-for="todo of todos"
           :id="todo.id"
-          :key="todo.id"
+          :todo-checked="todo.todoChecked"
           :todo-description="todo.todoDescription"
           :todo-title="`${todo.todoTitle}`"
+          :key="todo.id"
+          @check-todo="checkTodo"
+          @pin-todo="pinTodo"
           @delete-todo="deleteTodo"
     ></Todo>
-    <AddTodo @return-todo="returnTodo"></AddTodo>
+    <AddTodo key="0" @return-todo="returnTodo"></AddTodo>
   </TransitionGroup>
 
 </template>
@@ -19,6 +22,7 @@ import { reactive } from "vue";
 
 let todos = reactive<{
   id: number,
+  todoChecked: boolean,
   todoTitle: string,
   todoDescription: string
 }[]>([])
@@ -31,11 +35,22 @@ function returnTodo(todoTitle: string, todoDescription: string) {
   if (todoTitle) {
     todos.push({
       id: Date.now(),
+      todoChecked: false,
       todoTitle,
       todoDescription
     })
     localStorage.setItem('todos', JSON.stringify(todos))
   }
+}
+
+function checkTodo(id: number) {
+  for (const todo of todos) {
+    if (todo.id === id) {
+      todo.todoChecked = !todo.todoChecked
+      break
+    }
+  }
+  localStorage.setItem('todos', JSON.stringify(todos))
 }
 
 function deleteTodo(id: number) {
@@ -46,6 +61,16 @@ function deleteTodo(id: number) {
     }
   }
   localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+function pinTodo(id: number) {
+  for (const [index, todo] of todos.entries()) {
+    if (todo.id === id) {
+      const deletedTodo = todos.splice(index, 1)[0]
+      todos.unshift(deletedTodo)
+      break
+    }
+  }
 }
 </script>
 

@@ -1,8 +1,15 @@
 <template>
   <div class="todos">
-    <h1>{{ todoTitle }}</h1>
+    <a v-if="todoChecked" class="check" @click="$emit('check-todo', id)">✅ Checked</a>
+    <a class="pin" @click="$emit('pin-todo', id)">📌 Pin</a>
+    <h1 :style="{
+    textDecoration: todoChecked
+    ? 'line-through'
+    : 'none'
+    }">{{ todoTitle }}</h1>
     <p>{{ todoDescription || todoTitle }}</p>
-    <a class="check" @click="$emit('delete-todo', id)">Check</a>
+    <a v-if="!todoChecked" class="check" @click="$emit('check-todo', id)">✏️ Check</a>
+    <a v-if="todoChecked" class="delete" @click="$emit('delete-todo', id)">❌ Delete</a>
   </div>
 </template>
 
@@ -10,11 +17,14 @@
 defineProps<{
   id: number,
   todoTitle: string
+  todoChecked: boolean,
   todoDescription?: string
 }>()
 
 defineEmits<{
-  (e: 'delete-todo', id: number): void
+  (e: 'check-todo', id: number): void,
+  (e: 'pin-todo', id: number): void,
+  (e: 'delete-todo', id: number): void,
 }>()
 </script>
 
@@ -31,10 +41,32 @@ defineEmits<{
 .check {
   color: green;
   user-select: none;
+  margin-right: 1em;
 }
 
 .check:hover {
   color: darkgreen;
+  cursor: pointer;
+}
+
+.delete {
+  color: red;
+  user-select: none;
+}
+
+.delete:hover {
+  color: darkred;
+  cursor: pointer;
+}
+
+.pin {
+  color: deepskyblue;
+  user-select: none;
+  cursor: pointer;
+}
+
+.pin:hover {
+  color: blue;
   cursor: pointer;
 }
 </style>
