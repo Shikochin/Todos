@@ -1,6 +1,6 @@
 <template>
   <TransitionGroup id="todo-list" name="list" tag="div">
-    <Todo v-for="todo of todos"
+    <Todo v-for="todo of (hideCheckedTodos ? uncheckedTodos : todos)"
           :id="todo.id"
           :todo-checked="todo.todoChecked"
           :todo-description="todo.todoDescription"
@@ -10,7 +10,7 @@
           @pin-todo="pinTodo"
           @delete-todo="deleteTodo"
     ></Todo>
-    <AddTodo key="0" @return-todo="returnTodo"></AddTodo>
+    <AddTodo key="0" @return-todo="addTodo"></AddTodo>
   </TransitionGroup>
 
 </template>
@@ -18,7 +18,11 @@
 <script lang="ts" setup>
 import Todo from './Todo.vue';
 import AddTodo from './AddTodo.vue'
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
+
+defineProps<{
+  hideCheckedTodos: boolean
+}>()
 
 let todos = reactive<{
   id: number,
@@ -27,11 +31,15 @@ let todos = reactive<{
   todoDescription: string
 }[]>([])
 
+const uncheckedTodos = computed(() => {
+  return todos.filter((todo) => !todo.todoChecked)
+})
+
 if (localStorage.getItem('todos')) {
   todos = reactive(JSON.parse(localStorage.getItem('todos') as string))
 }
 
-function returnTodo(todoTitle: string, todoDescription: string) {
+function addTodo(todoTitle: string, todoDescription: string) {
   if (todoTitle) {
     todos.push({
       id: Date.now(),
