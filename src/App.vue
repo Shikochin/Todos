@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <nav id="navbar"><h1>/ Todos! /</h1></nav>
+    <Navbar></Navbar>
     <FunctionsBar></FunctionsBar>
     <TodoList></TodoList>
   </client-only>
@@ -8,10 +8,6 @@
 
 <script lang="ts" setup>
 import TodoList from './components/TodoList/TodoList.vue'
-import FunctionsBar from './components/FunctionsBar/FunctionsBar.vue'</script>
-
-<style scoped>
-#navbar {
-  text-align: center;
-}
-</style>
+import FunctionsBar from './components/FunctionsBar/FunctionsBar.vue'
+import Navbar from './components/Navbar.vue'
+</script>
