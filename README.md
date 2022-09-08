@@ -14,4 +14,4 @@ pnpm dev
 
 ## What's this?
 
-My practice project (**for learn [Vue.js](https://vuejs.org/)**), never mind.
+My practice project (**for learning [Vue.js](https://vuejs.org/)**), never mind.

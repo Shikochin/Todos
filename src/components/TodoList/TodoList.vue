@@ -2,7 +2,7 @@
   <!-- add / delete / pin 动画 -->
   <TransitionGroup id="todo-list" name="list" tag="div">
     <!--  如果 hideCheckedTodos 为 true，则遍历 todoChecked === false 的 Todo 的 todos 数组  -->
-    <Todo v-for="todo of (todoStore.hideCheckedTodos ? uncheckedTodos : todoStore.todos)"
+    <Todo v-for="todo of (todoStore.hideCheckedTodos ? todoStore.uncheckedTodos : todoStore.todos)"
           :todoId="todo.todoId"
           :todo-checked="todo.todoChecked"
           :todo-description="todo.todoDescription"
@@ -16,15 +16,9 @@
 <script lang="ts" setup>
 import Todo from './Todo.vue';
 import AddTodo from './AddTodo.vue'
-import { computed } from "vue";
 import { useStore } from '@/stores/todoStore'
 
 const todoStore = useStore()
-
-// 过滤掉 todoChecked 为 true 的 Todo
-const uncheckedTodos = computed(() => {
-  return todoStore.todos.filter((todo: { todoChecked: boolean; }) => !todo.todoChecked)
-})
 </script>
 
 <style scoped>

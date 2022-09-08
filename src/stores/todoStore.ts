@@ -6,6 +6,9 @@ export const useStore = defineStore({
         todos: JSON.parse(localStorage.getItem('todos') as string) || [],
         hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1'
     }),
+    getters: {
+        uncheckedTodos: (state) => state.todos.filter((todo: { todoChecked: boolean }) => !todo.todoChecked)
+    },
     actions: {
         toggleHide() {
             this.hideCheckedTodos = !this.hideCheckedTodos
@@ -22,14 +25,12 @@ export const useStore = defineStore({
                     todoTitle,
                     todoDescription
                 })
-                this.updateTodo()
             }
         },
         checkTodo(id: number) {
             for (const todo of this.todos) {
                 if (todo.todoId === id) {
                     todo.todoChecked = !todo.todoChecked
-                    this.updateTodo()
                     break
                 }
             }
@@ -40,7 +41,6 @@ export const useStore = defineStore({
                 for (const [index, todo] of this.todos.entries()) {
                     if (todo.todoId === id) {
                         this.todos.splice(index, 1)
-                        this.updateTodo()
                         break
                     }
                 }
@@ -51,7 +51,6 @@ export const useStore = defineStore({
                 if (todo.todoId === id) {
                     const deletedTodo = this.todos.splice(index, 1)[0]
                     this.todos.unshift(deletedTodo)
-                    this.updateTodo()
                     break
                 }
             }
