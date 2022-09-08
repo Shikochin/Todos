@@ -1,9 +1,9 @@
 <template>
   <div id="add-todo">
     <h1>
-      <input v-model.lazy="added.todoTitle" type="text">
+      <input v-model.lazy="added.todoTitle" placeholder="Todo title (required)" required type="text">
     </h1>
-    <textarea v-model.lazy="added.todoDescription"></textarea>
+    <textarea v-model.lazy="added.todoDescription" placeholder="Todo description"></textarea>
     <a id="insert" @click="$emit('return-todo', added.todoTitle, added.todoDescription)">Insert</a>
   </div>
 </template>
@@ -17,7 +17,7 @@ defineEmits<{
 
 const added = reactive({
   todoTitle: 'Untitled',
-  todoDescription: 'Todo description'
+  todoDescription: ''
 })
 </script>
 
