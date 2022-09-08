@@ -1,11 +1,11 @@
 <template>
   <nav id="func-nav">
-    <ToggleShow></ToggleShow>
+    <ToggleHide></ToggleHide>
   </nav>
 </template>
 
 <script lang="ts" setup>
-import ToggleShow from './ToggleShow.vue'</script>
+import ToggleHide from './ToggleHide.vue'</script>
 
 <style scoped>
 #func-nav {
