@@ -9,7 +9,7 @@
     }">{{ todoTitle }}</h1>
     <p>{{ todoDescription || todoTitle }}</p>
     <a v-if="!todoChecked" class="check" @click="$emit('check-todo', id)">✏️ Check</a>
-    <a v-if="todoChecked" class="delete" @click="$emit('delete-todo', id)">❌ Delete</a>
+    <a v-else class="delete" @click="$emit('delete-todo', id)">❌ Delete</a>
   </div>
 </template>
 

@@ -71,6 +71,7 @@ function pinTodo(id: number) {
       break
     }
   }
+  localStorage.setItem('todos', JSON.stringify(todos))
 }
 </script>
 
