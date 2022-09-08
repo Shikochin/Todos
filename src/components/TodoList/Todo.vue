@@ -12,7 +12,7 @@
     <p>{{ todoDescription || todoTitle }}</p>
     <!--  切换是否完成  -->
     <a v-if="!todoChecked" class="check" @click="todoStore.checkTodo(id)">✏️ Check</a>
-    <a v-else class="delete" @click="todoStore.deleteTodo(id)">❌ Delete</a>
+    <a class="delete" @click="todoStore.deleteTodo(id)">❌ Delete</a>
   </div>
 </template>
 
