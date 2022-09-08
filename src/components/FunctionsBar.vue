@@ -1,12 +1,13 @@
 <template>
   <nav id="func-nav">
-    <a id="hide" @click="$emit('hide-checked-todo')">😎 Toggle show / hide checked todos</a>
+    <!--  抛出 toggle-hide-checked-todo 事件 -->
+    <a id="hide" @click="$emit('toggle-hide-checked-todo')">😎 Toggle show / hide checked todos</a>
   </nav>
 </template>
 
 <script lang="ts" setup>
 defineEmits<{
-  (e: 'hide-checked-todo'): void
+  (e: 'toggle-hide-checked-todo'): void
 }>()
 </script>
 

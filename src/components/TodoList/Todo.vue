@@ -1,25 +1,32 @@
 <template>
   <div class="todos">
+    <!--  切换是否完成  -->
     <a v-if="todoChecked" class="check" @click="$emit('check-todo', id)">✅ Checked</a>
     <a class="pin" @click="$emit('pin-todo', id)">📌 Pin</a>
+    <!--  根据是否完成切换 h1 样式  -->
     <h1 :style="{
     textDecoration: todoChecked
     ? 'line-through'
     : 'none'
     }">{{ todoTitle }}</h1>
     <p>{{ todoDescription || todoTitle }}</p>
+    <!--  切换是否完成  -->
     <a v-if="!todoChecked" class="check" @click="$emit('check-todo', id)">✏️ Check</a>
     <a v-else class="delete" @click="$emit('delete-todo', id)">❌ Delete</a>
   </div>
 </template>
 
 <script lang="ts" setup>
-defineProps<{
+// 定义 Todo 接口
+interface Todo {
   id: number,
-  todoTitle: string
-  todoChecked: boolean,
-  todoDescription?: string
-}>()
+  todoTitle: string,
+  todoDescription: string,
+  todoChecked: boolean
+}
+
+// 定义要传入的参数
+defineProps<Todo>()
 
 defineEmits<{
   (e: 'check-todo', id: number): void,

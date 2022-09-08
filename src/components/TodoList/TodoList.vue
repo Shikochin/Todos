@@ -1,5 +1,7 @@
 <template>
+  <!-- add / delete / pin 动画 -->
   <TransitionGroup id="todo-list" name="list" tag="div">
+    <!--  如果 hideCheckedTodos 为 true，则遍历没有已完成 Todo 的 todos 数组  -->
     <Todo v-for="todo of (hideCheckedTodos ? uncheckedTodos : todos)"
           :id="todo.id"
           :todo-checked="todo.todoChecked"
@@ -10,7 +12,7 @@
           @pin-todo="pinTodo"
           @delete-todo="deleteTodo"
     ></Todo>
-    <AddTodo key="0" @return-todo="addTodo"></AddTodo>
+    <AddTodo key="0" @add-todo="addTodo"></AddTodo>
   </TransitionGroup>
 
 </template>
@@ -20,24 +22,28 @@ import Todo from './Todo.vue';
 import AddTodo from './AddTodo.vue'
 import { computed, reactive } from "vue";
 
+// 定义 Todo 接口
+interface TodoType {
+  id: number,
+  todoTitle: string,
+  todoDescription: string,
+  todoChecked: boolean
+}
+
 defineProps<{
   hideCheckedTodos: boolean
 }>()
 
-let todos = reactive<{
-  id: number,
-  todoChecked: boolean,
-  todoTitle: string,
-  todoDescription: string
-}[]>([])
-
-const uncheckedTodos = computed(() => {
-  return todos.filter((todo) => !todo.todoChecked)
-})
+let todos = reactive<TodoType[]>([])
 
 if (localStorage.getItem('todos')) {
   todos = reactive(JSON.parse(localStorage.getItem('todos') as string))
 }
+
+// 过滤 todoChecked 为 true 的 Todo
+const uncheckedTodos = computed(() => {
+  return todos.filter((todo) => !todo.todoChecked)
+})
 
 function addTodo(todoTitle: string, todoDescription: string) {
   if (todoTitle) {
