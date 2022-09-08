@@ -1,13 +1,15 @@
 <template>
-  <div id="todo-list">
+  <TransitionGroup id="todo-list" name="list" tag="div">
     <Todo v-for="todo of todos"
           :id="todo.id"
+          :key="todo.id"
           :todo-description="todo.todoDescription"
           :todo-title="`${todo.todoTitle}`"
           @delete-todo="deleteTodo"
     ></Todo>
     <AddTodo @return-todo="returnTodo"></AddTodo>
-  </div>
+  </TransitionGroup>
+
 </template>
 
 <script lang="ts" setup>
@@ -52,5 +54,21 @@ function deleteTodo(id: number) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 20px;
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translate3d(-30px, -30px, 0px);
+}
+
+.list-leave-active {
+  position: absolute;
 }
 </style>
