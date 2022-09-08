@@ -1,8 +1,8 @@
 <template>
   <div class="todos">
     <!--  切换是否完成  -->
-    <a v-if="todoChecked" class="check" @click="$emit('check-todo', id)">✅ Checked</a>
-    <a class="pin" @click="$emit('pin-todo', id)">📌 Pin</a>
+    <a v-if="todoChecked" class="check" @click="todoStore.checkTodo(id)">✅ Checked</a>
+    <a class="pin" @click="todoStore.pinTodo(id)">📌 Pin</a>
     <!--  根据是否完成切换 h1 样式  -->
     <h1 :style="{
     textDecoration: todoChecked
@@ -11,12 +11,16 @@
     }">{{ todoTitle }}</h1>
     <p>{{ todoDescription || todoTitle }}</p>
     <!--  切换是否完成  -->
-    <a v-if="!todoChecked" class="check" @click="$emit('check-todo', id)">✏️ Check</a>
-    <a v-else class="delete" @click="$emit('delete-todo', id)">❌ Delete</a>
+    <a v-if="!todoChecked" class="check" @click="todoStore.checkTodo(id)">✏️ Check</a>
+    <a v-else class="delete" @click="todoStore.deleteTodo(id)">❌ Delete</a>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useStore } from "@/stores/todoStore";
+
+const todoStore = useStore()
+
 // 定义 Todo 接口
 interface Todo {
   id: number,
@@ -27,12 +31,6 @@ interface Todo {
 
 // 定义要传入的参数
 defineProps<Todo>()
-
-defineEmits<{
-  (e: 'check-todo', id: number): void,
-  (e: 'pin-todo', id: number): void,
-  (e: 'delete-todo', id: number): void,
-}>()
 </script>
 
 <style scoped>

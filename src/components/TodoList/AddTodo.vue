@@ -7,18 +7,16 @@
     <!--  Todo description 输入框（可选，默认为 Todo 标题）  -->
     <textarea v-model.lazy="added.todoDescription" placeholder="Todo description"></textarea>
     <!--  抛出要添加的 Todo，并携带两个参数：added.todoTitle, added.todoDescription  -->
-    <a id="insert" @click="$emit('add-todo', added.todoTitle, added.todoDescription)">✒️ Insert</a>
+    <a id="insert" @click="todoStore.addTodo(added.todoTitle, added.todoDescription)">✒️ Insert</a>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { reactive } from "vue";
-// 定义要抛出的事件 add-todo
-defineEmits<{
-  (e: 'add-todo', todoTitle: string, todoDescription: string): void
-}>()
+import { useStore } from "@/stores/todoStore";
 
-// 要添加的 Todo
+const todoStore = useStore()
+
 const added = reactive({
   todoTitle: 'Untitled',
   todoDescription: ''
