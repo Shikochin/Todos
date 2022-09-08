@@ -1,6 +1,7 @@
 <template>
   <div id="add-todo">
-    <h1><input v-model.lazy="added.todoTitle" type="text">
+    <h1>
+      <input v-model.lazy="added.todoTitle" type="text">
     </h1>
     <textarea v-model.lazy="added.todoDescription"></textarea>
     <a id="insert" @click="$emit('return-todo', added.todoTitle, added.todoDescription)">Insert</a>

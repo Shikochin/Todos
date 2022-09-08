@@ -13,9 +13,7 @@
 <script lang="ts" setup>
 import Todo from './Todo.vue';
 import AddTodo from './AddTodo.vue'
-import { reactive, ref } from "vue";
-
-const count = ref(0)
+import { reactive } from "vue";
 
 let todos = reactive<{
   id: number,
@@ -30,7 +28,7 @@ if (localStorage.getItem('todos')) {
 function returnTodo(todoTitle: string, todoDescription: string) {
   if (todoTitle) {
     todos.push({
-      id: count.value++,
+      id: Date.now(),
       todoTitle,
       todoDescription
     })
