@@ -14,6 +14,9 @@ export const useStore = defineStore({
         uncheckedTodos: (state) => state.todos.filter((todo: { todoChecked: boolean }) => !todo.todoChecked)
     },
     actions: {
+        currentTodo(id: number) {
+            return [this.todos.find((todo: { todoId: number }) => todo.todoId === id), this.todos.findIndex((todo: { todoId: number }) => todo.todoId === id)]
+        },
         toggleHide() {
             this.hideCheckedTodos = !this.hideCheckedTodos
             localStorage.setItem('hideCheckedTodos', this.hideCheckedTodos ? '1' : '0')
@@ -32,32 +35,19 @@ export const useStore = defineStore({
             }
         },
         checkTodo(id: number) {
-            for (const todo of this.todos) {
-                if (todo.todoId === id) {
-                    todo.todoChecked = !todo.todoChecked
-                    break
-                }
-            }
-
+            const [curTodo] = this.currentTodo(id)
+            curTodo.todoChecked = !curTodo.todoChecked
         },
         deleteTodo(id: number) {
             if (confirm(`Confirm to delete?`)) {
-                for (const [index, todo] of this.todos.entries()) {
-                    if (todo.todoId === id) {
-                        this.todos.splice(index, 1)
-                        break
-                    }
-                }
+                const [, curTodoIndex] = this.currentTodo(id)
+                this.todos.splice(curTodoIndex, 1)
             }
         },
         pinTodo(id: number) {
-            for (const [index, todo] of this.todos.entries()) {
-                if (todo.todoId === id) {
-                    const deletedTodo = this.todos.splice(index, 1)[0]
-                    this.todos.unshift(deletedTodo)
-                    break
-                }
-            }
+            const [pinnedTodo, pinnedTodoIndex] = this.currentTodo(id)
+            this.todos.splice(pinnedTodoIndex, 1)
+            this.todos.unshift(pinnedTodo)
         }
     }
 });
