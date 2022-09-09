@@ -3,13 +3,13 @@
     <a class="pin" @click="todoStore.pinTodo(todoId)">📌 Pin</a>
     <!--  根据是否完成切换 h1 样式  -->
     <h1 class="text" :style="{
-    textDecoration: todoChecked
+    textDecoration: todo.todoChecked
     ? 'line-through'
     : 'none'
-    }">{{ todoTitle }}</h1>
-    <p class="text">{{ todoDescription || todoTitle }}</p>
+    }">{{ todo.todoTitle }}</h1>
+    <p class="text">{{ todo.todoDescription || todo.todoTitle }}</p>
     <!--  切换是否完成  -->
-    <a v-if="!todoChecked" class="check" @click="todoStore.checkTodo(todoId)">✏️ Check</a>
+    <a v-if="!todo.todoChecked" class="check" @click="todoStore.checkTodo(todoId)">✏️ Check</a>
     <a v-else class="check" @click="todoStore.checkTodo(todoId)">✅ Checked</a>
     <a class="delete" @click="todoStore.deleteTodo(todoId)">❌ Delete</a>
   </div>
@@ -20,16 +20,9 @@ import { useStore } from "@/stores/todoStore";
 
 const todoStore = useStore()
 
-// 定义 Todo 接口
-interface Todo {
-  todoId: number,
-  todoTitle: string,
-  todoDescription: string,
-  todoChecked: boolean
-}
+const props = defineProps(['todoId'])
 
-// 定义要传入的参数
-defineProps<Todo>()
+const [todo] = todoStore.currentTodo(props.todoId)
 </script>
 
 <style scoped lang="scss">

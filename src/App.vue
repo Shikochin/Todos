@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts" setup>
-import TodoList from './components/TodoList/TodoList.vue'
-import FunctionsBar from './components/FunctionsBar/FunctionsBar.vue'
 import Navbar from './components/Navbar.vue'
+import FunctionsBar from './components/FunctionsBar/FunctionsBar.vue'
+import TodoList from './components/TodoList/TodoList.vue'
 import { useStore } from "@/stores/todoStore";
 import { watch } from "vue";
 
