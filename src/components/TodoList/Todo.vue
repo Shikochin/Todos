@@ -68,7 +68,6 @@ defineProps<Todo>()
 .pin {
   color: $pin-color-light;
   user-select: none;
-  cursor: pointer;
 }
 
 .pin:hover {
@@ -100,7 +99,7 @@ defineProps<Todo>()
   .pin:hover {
     color: $pin-color-dark-hover
   }
-  .text{
+  .text {
     color: $text-color-dark;
   }
 }

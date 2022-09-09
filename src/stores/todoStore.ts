@@ -4,7 +4,11 @@ export const useStore = defineStore({
     id: "todoStore",
     state: () => ({
         todos: JSON.parse(localStorage.getItem('todos') as string) || [],
-        hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1'
+        hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1',
+        cacheTodo: {
+            todoTitle: 'Untitled',
+            todoDescription: ''
+        }
     }),
     getters: {
         uncheckedTodos: (state) => state.todos.filter((todo: { todoChecked: boolean }) => !todo.todoChecked)
