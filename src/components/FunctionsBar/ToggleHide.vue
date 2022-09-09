@@ -3,20 +3,30 @@
 </template>
 
 <script lang="ts" setup>
-// 获取 hideCheckedTodos store
 import { useStore } from "@/stores/todoStore";
 
-let todoStore = useStore()
+const todoStore = useStore()
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/style/palette.scss";
+
 #hide {
-  color: gray;
+  color: $toggleHide-color-light;
   user-select: none;
 }
 
 #hide:hover {
-  color: black;
+  color: $toggleHide-color-light-hover;
   cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  #hide {
+    color: $toggleHide-color-dark;
+  }
+  #hide:hover {
+    color: $toggleHide-color-dark-hover;
+  }
 }
 </style>
