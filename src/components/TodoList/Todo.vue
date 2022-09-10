@@ -1,28 +1,29 @@
 <template>
   <div class="todos">
-    <a class="pin" @click="todoStore.pinTodo(todoId)">📌 Pin</a>
-    <!--  根据是否完成切换 h1 样式  -->
-    <h1 class="text" :style="{
+    <Time :todo-id="todoId" :class="['info']"></Time>
+    <h1 class="info" :style="{
     textDecoration: todo.todoChecked
     ? 'line-through'
     : 'none'
     }">{{ todo.todoTitle }}</h1>
-    <p class="text">{{ todo.todoDescription || todo.todoTitle }}</p>
-    <!--  切换是否完成  -->
-    <a v-if="!todo.todoChecked" class="check" @click="todoStore.checkTodo(todoId)">✏️ Check</a>
-    <a v-else class="check" @click="todoStore.checkTodo(todoId)">✅ Checked</a>
-    <a class="delete" @click="todoStore.deleteTodo(todoId)">❌ Delete</a>
+    <p class="info">{{ todo.todoDescription || todo.todoTitle }}</p>
+    <Pin :todo-id="todoId"></Pin>
+    <Check :todo-id="todoId"></Check>
+    <Delete :todo-id="todoId"></Delete>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useStore } from "@/stores/todoStore";
+import Pin from './TodoActions/Pin.vue'
+import Check from './TodoActions/Check.vue'
+import Delete from './TodoActions/Delete.vue'
+import Time from './TodoInfos/Time.vue'
 
 const todoStore = useStore()
-
 const props = defineProps(['todoId'])
-
 const [todo] = todoStore.currentTodo(props.todoId)
+
 </script>
 
 <style scoped lang="scss">
@@ -37,62 +38,13 @@ const [todo] = todoStore.currentTodo(props.todoId)
   box-shadow: 6px 6px 6px 1px $todo-box-shadow-color-light;
 }
 
-.check {
-  color: $check-color-light;
-  user-select: none;
-  margin-right: 1em;
-}
-
-.check:hover {
-  color: $check-color-light-hover;
-  cursor: pointer;
-}
-
-.delete {
-  color: $delete-color-light;
-  user-select: none;
-}
-
-.delete:hover {
-  color: $delete-color-light-hover;
-  cursor: pointer;
-}
-
-.pin {
-  color: $pin-color-light;
-  user-select: none;
-}
-
-.pin:hover {
-  color: $pin-color-light-hover;
-  cursor: pointer;
-}
-
 @media (prefers-color-scheme: dark) {
   .todos {
     border-color: $todo-border-color-dark;
     background-color: $todo-background-color-dark;
     box-shadow: 6px 6px 6px 1px $todo-box-shadow-color-dark;
   }
-  .check {
-    color: $check-color-dark;
-  }
-  .check:hover {
-    color: $check-color-dark-hover;
-  }
-  .delete {
-    color: $delete-color-dark
-  }
-  .delete:hover {
-    color: $delete-color-dark-hover
-  }
-  .pin {
-    color: $pin-color-dark
-  }
-  .pin:hover {
-    color: $pin-color-dark-hover
-  }
-  .text {
+  .info, .info {
     color: $text-color-dark;
   }
 }

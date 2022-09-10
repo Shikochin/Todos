@@ -1,5 +1,6 @@
 <template>
-  <a id="hide" @click="todoStore.toggleHide()">😎 Toggle show / hide checked todos</a>
+  <a id="hide" @click="todoStore.toggleHide()" v-if="todoStore.hideCheckedTodos">😎 Toggle checked todos visibility</a>
+  <a id="hide" @click="todoStore.toggleHide()" v-else>🫤 Toggle checked todos visibility</a>
 </template>
 
 <script lang="ts" setup>

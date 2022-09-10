@@ -1,20 +1,29 @@
 import { defineStore } from "pinia";
 
+interface Todo {
+    todoId: number,
+    todoChecked: boolean,
+    todoTitle: string,
+    todoDescription: string
+}
+
 export const useStore = defineStore({
     id: "todoStore",
     state: () => ({
         todos: JSON.parse(localStorage.getItem('todos') as string) || [],
         hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1',
-        cacheTodo: {
-            todoTitle: 'Untitled',
-            todoDescription: ''
+        cacheTodos: {
+            addedTodo: {
+                todoTitle: 'Untitled',
+                todoDescription: ''
+            }
         }
     }),
     getters: {
         uncheckedTodos: (state) => state.todos.filter((todo: { todoChecked: boolean }) => !todo.todoChecked)
     },
     actions: {
-        currentTodo(id: number) {
+        currentTodo(id: number): [Todo, number] {
             return [this.todos.find((todo: { todoId: number }) => todo.todoId === id), this.todos.findIndex((todo: { todoId: number }) => todo.todoId === id)]
         },
         toggleHide() {
