@@ -1,24 +1,24 @@
 <template>
   <div class="todos">
-    <Time :todo-id="todoId" :class="['info']"></Time>
+    <TodoTime :todo-id="todoId" :class="['info']"></TodoTime>
     <h1 class="info" :style="{
     textDecoration: todo.todoChecked
     ? 'line-through'
     : 'none'
     }">{{ todo.todoTitle }}</h1>
     <p class="info">{{ todo.todoDescription || todo.todoTitle }}</p>
-    <Pin :todo-id="todoId"></Pin>
-    <Check :todo-id="todoId"></Check>
-    <Delete :todo-id="todoId"></Delete>
+    <PinTodo :todo-id="todoId"></PinTodo>
+    <CheckTodo :todo-id="todoId"></CheckTodo>
+    <DeleteTodo :todo-id="todoId"></DeleteTodo>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useStore } from "@/stores/todoStore";
-import Pin from './TodoActions/Pin.vue'
-import Check from './TodoActions/Check.vue'
-import Delete from './TodoActions/Delete.vue'
-import Time from './TodoInfos/Time.vue'
+import PinTodo from './TodoActions/PinTodo.vue'
+import CheckTodo from './TodoActions/CheckTodo.vue'
+import DeleteTodo from './TodoActions/DeleteTodo.vue'
+import TodoTime from './TodoInfos/TodoTime.vue'
 
 const todoStore = useStore()
 const props = defineProps(['todoId'])

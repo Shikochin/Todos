@@ -1,16 +1,16 @@
 <template>
   <div id="add-todo">
-    <AddInputArea></AddInputArea>
+    <AddTodoInputArea></AddTodoInputArea>
     <a id="insert"
-       @click="todoStore.addTodo(todoStore.cacheTodos.addedTodo.todoTitle,
-       todoStore.cacheTodos.addedTodo.todoDescription)"
+       @click="todoStore.addTodo(todoStore.addedTodo.todoTitle,
+       todoStore.addedTodo.todoDescription)"
     >✒️ Insert</a>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useStore } from "@/stores/todoStore";
-import AddInputArea from './AddInputArea.vue'
+import AddTodoInputArea from './AddTodoInputArea.vue'
 
 const todoStore = useStore()
 </script>

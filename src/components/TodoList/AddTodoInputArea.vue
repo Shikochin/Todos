@@ -1,7 +1,7 @@
 <template>
   <h1>
     <input class="input"
-           v-model.lazy="todoStore.cacheTodos.addedTodo.todoTitle"
+           v-model.lazy="todoStore.addedTodo.todoTitle"
            placeholder="Todo title (required)"
            required
            type="text"
@@ -9,7 +9,7 @@
   </h1>
   <textarea
       class="input desc"
-      v-model.lazy="todoStore.cacheTodos.addedTodo.todoDescription"
+      v-model.lazy="todoStore.addedTodo.todoDescription"
       placeholder="Todo description"
   >
   </textarea>
