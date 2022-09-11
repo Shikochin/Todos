@@ -1,22 +1,14 @@
 import { defineStore } from "pinia";
-
-interface Todo {
-    todoId: number,
-    todoChecked: boolean,
-    todoTitle: string,
-    todoDescription: string
-}
+import type Todo from "@/interfaces/Todo";
 
 export const useStore = defineStore({
     id: "todoStore",
     state: () => ({
         todos: JSON.parse(localStorage.getItem('todos') as string) || [],
         hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1',
-        cacheTodos: {
-            addedTodo: {
-                todoTitle: 'Untitled',
-                todoDescription: ''
-            }
+        addedTodo: {
+            todoTitle: 'Untitled',
+            todoDescription: ''
         }
     }),
     getters: {
