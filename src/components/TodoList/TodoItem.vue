@@ -21,8 +21,10 @@ import DeleteTodo from './TodoActions/DeleteTodo.vue'
 import TodoTime from './TodoInfos/TodoTime.vue'
 
 const todoStore = useStore()
-const props = defineProps(['todoId'])
-const [todo] = todoStore.currentTodo(props.todoId)
+const props = defineProps<{
+  todoId: number
+}>()
+const [todo] = todoStore.getTodo(props.todoId)
 
 </script>
 

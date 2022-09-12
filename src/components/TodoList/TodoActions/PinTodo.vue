@@ -7,7 +7,9 @@ import { useStore } from "@/stores/todoStore";
 
 const todoStore = useStore()
 
-defineProps(['todoId'])
+defineProps<{
+  todoId: number
+}>()
 </script>
 
 <style scoped lang="scss">

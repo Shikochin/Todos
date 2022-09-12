@@ -1,6 +1,8 @@
 <template>
-  <a id="hide" @click="todoStore.toggleHide()" v-if="todoStore.hideCheckedTodos">😎 Toggle checked todos visibility</a>
-  <a id="hide" @click="todoStore.toggleHide()" v-else>🫤 Toggle checked todos visibility</a>
+  <a id="toggle-hide" @click="todoStore.toggleHide()" v-show="!todoStore.hideCheckedTodos">😐 Toggle checked todos
+    visibility</a>
+  <a id="toggle-hide" @click="todoStore.toggleHide()" v-show="todoStore.hideCheckedTodos">🫥 Toggle checked todos
+    visibility</a>
 </template>
 
 <script lang="ts" setup>
@@ -12,22 +14,22 @@ const todoStore = useStore()
 <style scoped lang="scss">
 @import "@/style/palette.scss";
 
-#hide {
-  color: $toggleHide-color-light;
+#toggle-hide {
+  color: $functions-color-light;
   user-select: none;
 }
 
-#hide:hover {
-  color: $toggleHide-color-light-hover;
+#toggle-hide:hover {
+  color: $functions-color-light-hover;
   cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
-  #hide {
-    color: $toggleHide-color-dark;
+  #toggle-hide {
+    color: $functions-color-dark;
   }
-  #hide:hover {
-    color: $toggleHide-color-dark-hover;
+  #toggle-hide:hover {
+    color: $functions-color-dark-hover;
   }
 }
 </style>

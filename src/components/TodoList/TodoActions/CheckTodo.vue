@@ -1,6 +1,6 @@
 <template>
-  <a v-if="!curTodo.todoChecked" class="check" @click="todoStore.checkTodo(todoId)">✏️ Check</a>
-  <a v-else class="check" @click="todoStore.checkTodo(todoId)">✅ Checked</a>
+  <a v-show="!todo.todoChecked" class="check" @click="todoStore.checkTodo(todoId)">✏️ Check</a>
+  <a v-show="todo.todoChecked" class="check" @click="todoStore.checkTodo(todoId)">✅ Checked</a>
 </template>
 
 <script lang="ts" setup>
@@ -8,9 +8,11 @@ import { useStore } from "@/stores/todoStore";
 
 const todoStore = useStore()
 
-const props = defineProps(['todoId'])
+const props = defineProps<{
+  todoId: number
+}>()
 
-const [curTodo] = todoStore.currentTodo(props.todoId)
+const [todo] = todoStore.getTodo(props.todoId)
 </script>
 
 <style scoped lang="scss">

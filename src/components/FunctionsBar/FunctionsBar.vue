@@ -5,7 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import ToggleHide from './ToggleHide.vue'</script>
+import ToggleHide from './ToggleHide.vue'
+</script>
 
 <style scoped>
 #func-nav {
