@@ -15,8 +15,8 @@ export const useStore = defineStore({
         uncheckedTodos: (state) => state.todos.filter(todo => !todo.todoChecked)
     },
     actions: {
-        currentTodo(id: number): [Todo | undefined, number] {
-            return [this.todos.find(todo => todo.todoId === id), this.todos.findIndex(todo => todo.todoId === id)]
+        getTodo(id: number): [Todo, number] {
+            return [this.todos.find(todo => todo.todoId === id) as Todo, this.todos.findIndex(todo => todo.todoId === id)]
         },
         toggleHide() {
             this.hideCheckedTodos = !this.hideCheckedTodos
@@ -26,32 +26,30 @@ export const useStore = defineStore({
             localStorage.setItem('todos', JSON.stringify(this.todos))
         },
         addTodo(todoTitle: string, todoDescription: string) {
-            if (todoTitle) {
+            if (todoTitle.trim()) {
                 this.todos.push({
                     todoId: Date.now(),
+                    todoTitle: todoTitle.trim(),
+                    todoDescription: todoDescription.trim(),
                     todoChecked: false,
-                    todoTitle,
-                    todoDescription
                 })
                 this.updateTodo()
             }
         },
         checkTodo(id: number) {
-            const [curTodo] = this.currentTodo(id)
-            if (curTodo) {
-                curTodo.todoChecked = !curTodo.todoChecked
-                this.updateTodo()
-            }
+            const [curTodo] = this.getTodo(id)
+            curTodo!.todoChecked = !curTodo!.todoChecked
+            this.updateTodo()
         },
         deleteTodo(id: number) {
-            if (confirm(`Confirm to delete?`)) {
-                const [, curTodoIndex] = this.currentTodo(id)
-                this.todos.splice(curTodoIndex, 1)
+            if (confirm('Confirm to delete?')) {
+                const [, deletedTodoIndex] = this.getTodo(id)
+                this.todos.splice(deletedTodoIndex, 1)
                 this.updateTodo()
             }
         },
         pinTodo(id: number) {
-            const [pinnedTodo, pinnedTodoIndex] = this.currentTodo(id)
+            const [pinnedTodo, pinnedTodoIndex] = this.getTodo(id)
             this.todos.splice(pinnedTodoIndex, 1)
             this.todos.unshift(pinnedTodo as Todo)
             this.updateTodo()
