@@ -37,12 +37,12 @@ export const useStore = defineStore({
         updateTodo() {
             localStorage.setItem('todos', JSON.stringify(this.todos))
         },
-        addTodo(todoTitle: string, todoDescription: string) {
-            if (todoTitle.trim()) {
+        addTodo() {
+            if (this.addedTodo.todoTitle.trim()) {
                 this.todos.push({
                     todoId: Date.now(),
-                    todoTitle: todoTitle.trim(),
-                    todoDescription: todoDescription.trim(),
+                    todoTitle: this.addedTodo.todoTitle.trim(),
+                    todoDescription: this.addedTodo.todoDescription.trim(),
                     todoChecked: false,
                 })
                 this.updateTodo()

@@ -2,8 +2,7 @@
   <div id="add-todo">
     <AddTodoInputArea></AddTodoInputArea>
     <a id="insert"
-       @click="todoStore.addTodo(todoStore.addedTodo.todoTitle,
-       todoStore.addedTodo.todoDescription)"
+       @click="todoStore.addTodo()"
     >✒️ Insert</a>
   </div>
 </template>
