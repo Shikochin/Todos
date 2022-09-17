@@ -45,7 +45,6 @@ export const useStore = defineStore({
                     todoDescription: this.addedTodo.todoDescription.trim(),
                     todoChecked: false,
                 })
-                this.updateTodo()
                 this.addedTodo.todoTitle = 'Untitled'
                 this.addedTodo.todoDescription = ''
             }
@@ -53,20 +52,17 @@ export const useStore = defineStore({
         checkTodo(id: number) {
             const [curTodo] = this.getTodo(id)
             curTodo!.todoChecked = !curTodo!.todoChecked
-            this.updateTodo()
         },
         deleteTodo(id: number) {
             if (confirm('Confirm to delete?')) {
                 const [, deletedTodoIndex] = this.getTodo(id)
                 this.todos.splice(deletedTodoIndex, 1)
-                this.updateTodo()
             }
         },
         pinTodo(id: number) {
             const [pinnedTodo, pinnedTodoIndex] = this.getTodo(id)
             this.todos.splice(pinnedTodoIndex, 1)
             this.todos.unshift(pinnedTodo)
-            this.updateTodo()
         }
     }
 });
