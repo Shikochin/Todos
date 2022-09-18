@@ -32,8 +32,7 @@
              resize-none
              col-span-3
              pl-0.5"
-      placeholder="Todo description"
-  >
+      placeholder="Todo description">
   </textarea>
 </template>
 

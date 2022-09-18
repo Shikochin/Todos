@@ -1,5 +1,5 @@
 <template>
-  <p class="info dark:text-stone-100"># {{ todoCreatedTime }}</p>
+  <p class="time dark:text-stone-100"># {{ todoCreatedTime }}</p>
 </template>
 
 <script lang="ts" setup>
