@@ -9,12 +9,6 @@ export const useStore = defineStore({
         addedTodo: {
             todoTitle: 'Untitled',
             todoDescription: ''
-        },
-        cachedTodo: <Todo>{
-            todoId: NaN,
-            todoTitle: '',
-            todoDescription: '',
-            todoChecked: false
         }
     }),
     getters: {
@@ -23,12 +17,7 @@ export const useStore = defineStore({
     actions: {
         getTodo(id: number): [Todo, number] {
             const todoIndex = this.todos.findIndex(todo => todo.todoId === id)
-            if (id === this.cachedTodo.todoId) {
-                return [this.cachedTodo, todoIndex]
-            }
-            const todo = this.todos.find(todo => todo.todoId === id) as Todo
-            this.cachedTodo = todo
-            return [todo, todoIndex]
+            return [this.todos[todoIndex], todoIndex]
         },
         toggleHide() {
             this.hideCheckedTodos = !this.hideCheckedTodos
@@ -50,8 +39,8 @@ export const useStore = defineStore({
             }
         },
         checkTodo(id: number) {
-            const [curTodo] = this.getTodo(id)
-            curTodo!.todoChecked = !curTodo!.todoChecked
+            const [checkedTodo] = this.getTodo(id)
+            checkedTodo.todoChecked = !checkedTodo.todoChecked
         },
         deleteTodo(id: number) {
             if (confirm('Confirm to delete?')) {
