@@ -9,6 +9,6 @@ import { useStore } from "@/stores/todoStore";
 const todoStore = useStore()
 
 defineProps<{
-  todoId: number
+  todoId: string
 }>()
 </script>

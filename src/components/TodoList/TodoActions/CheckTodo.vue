@@ -10,7 +10,7 @@ import { computed } from "vue";
 const todoStore = useStore()
 
 const props = defineProps<{
-  todoId: number
+  todoId: string
 }>()
 
 const [todo] = todoStore.getTodo(props.todoId)

@@ -1,5 +1,6 @@
 export interface Todo {
-    readonly todoId: number,
+    readonly todoId: string,
+    readonly todoCreatedTime: number,
     todoTitle: string,
     todoDescription: string
     todoChecked: boolean,

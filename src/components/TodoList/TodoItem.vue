@@ -8,7 +8,7 @@
               background-colors
               rounded-md
               p-8">
-    <TodoTime :todo-id="todoId"></TodoTime>
+    <TodoTime :todo-created-time="todo.todoCreatedTime"></TodoTime>
     <h1 :style="{
     textDecoration: todo.todoChecked
     ? 'line-through'
@@ -30,7 +30,7 @@ import TodoTime from './TodoInfos/TodoTime.vue'
 
 const todoStore = useStore()
 const props = defineProps<{
-  todoId: number
+  todoId: string
 }>()
 const [todo] = todoStore.getTodo(props.todoId)
 </script>
