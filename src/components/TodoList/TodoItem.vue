@@ -1,12 +1,26 @@
 <template>
-  <div class="todos">
-    <TodoTime :todo-id="todoId" :class="['info']"></TodoTime>
-    <h1 class="info" :style="{
+  <div class="todos
+              font-mono
+              border-solid
+              border-[3px]
+              border-black
+              dark:border-stone-100
+              bg-todoLight
+              dark:bg-todoGray
+              rounded-md
+              p-8
+              shadow-xl
+              shadow-indigo-900/20
+              dark:shadow-violet-600/20
+              hover:shadow-indigo-900/30
+              dark:hover:shadow-violet-600/30">
+    <TodoTime :todo-id="todoId"></TodoTime>
+    <h1 :style="{
     textDecoration: todo.todoChecked
     ? 'line-through'
     : 'none'
-    }">{{ todo.todoTitle }}</h1>
-    <p class="info">{{ todo.todoDescription || todo.todoTitle }}</p>
+    }" class="info dark:text-stone-100 text-4xl my-4">{{ todo.todoTitle }}</h1>
+    <p class="info dark:text-stone-100 mb-4">{{ todo.todoDescription || todo.todoTitle }}</p>
     <PinTodo :todo-id="todoId"></PinTodo>
     <CheckTodo :todo-id="todoId"></CheckTodo>
     <DeleteTodo :todo-id="todoId"></DeleteTodo>
@@ -25,29 +39,4 @@ const props = defineProps<{
   todoId: number
 }>()
 const [todo] = todoStore.getTodo(props.todoId)
-
 </script>
-
-<style scoped lang="scss">
-@import "@/style/palette.scss";
-
-.todos {
-  border-style: solid;
-  border-color: $todo-border-color-light;
-  border-radius: 6px;
-  padding: 30px;
-  background-color: $todo-background-color-light;
-  box-shadow: 6px 6px 6px 1px $todo-box-shadow-color-light;
-}
-
-@media (prefers-color-scheme: dark) {
-  .todos {
-    border-color: $todo-border-color-dark;
-    background-color: $todo-background-color-dark;
-    box-shadow: 6px 6px 6px 1px $todo-box-shadow-color-dark;
-  }
-  .info, .info {
-    color: $text-color-dark;
-  }
-}
-</style>

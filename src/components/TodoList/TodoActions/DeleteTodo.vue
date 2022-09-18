@@ -1,5 +1,6 @@
 <template>
-  <a class="delete" @click="todoStore.deleteTodo(todoId)">❌ Delete</a>
+  <a class="delete select-none mr-[1em] text-red-600 hover:text-red-900 hover:cursor-pointer dark:text-red-400 dark:hover:text-red-500"
+     @click="todoStore.deleteTodo(todoId)">❌ Delete</a>
 </template>
 
 <script lang="ts" setup>
@@ -11,26 +12,3 @@ defineProps<{
   todoId: number
 }>()
 </script>
-
-<style scoped lang="scss">
-@import "@/style/palette.scss";
-
-.delete {
-  color: $delete-color-light;
-  user-select: none;
-}
-
-.delete:hover {
-  color: $delete-color-light-hover;
-  cursor: pointer;
-}
-
-@media (prefers-color-scheme: dark) {
-  .delete {
-    color: $delete-color-dark
-  }
-  .delete:hover {
-    color: $delete-color-dark-hover
-  }
-}
-</style>

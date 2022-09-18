@@ -1,7 +1,25 @@
 <template>
-  <div id="add-todo">
+  <div id="add-todo" class="
+            grid
+            gap-4
+            p-6
+            font-mono
+            border-dotted
+            border-4
+            border-black
+            dark:border-stone-100
+            rounded-md
+            bg-todoLight
+            dark:bg-todoGray
+            shadow-xl
+            shadow-indigo-900/20
+            dark:shadow-violet-600/20
+            hover:shadow-indigo-900/30
+            dark:hover:shadow-violet-600/30
+">
     <AddTodoInputArea></AddTodoInputArea>
     <a id="insert"
+       class="select-none text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-400 hover:cursor-pointer"
        @click="todoStore.addTodo()"
     >✒️ Insert</a>
   </div>
@@ -13,43 +31,3 @@ import AddTodoInputArea from './AddTodoInputArea.vue'
 
 const todoStore = useStore()
 </script>
-
-<style scoped lang="scss">
-@import "@/style/palette.scss";
-
-#add-todo {
-  border-style: dotted;
-  border-color: $todo-border-color-light;
-  border-radius: 6px;
-  padding-left: 30px;
-  padding-bottom: 20px;
-  background-color: $todo-background-color-light;
-  overflow: auto;
-  min-height: 200px;
-  box-shadow: 6px 6px 6px 1px $todo-box-shadow-color-light;
-}
-
-#insert {
-  color: $insert-color-light;
-  user-select: none;
-}
-
-#insert:hover {
-  color: $insert-color-light-hover;
-  cursor: pointer;
-}
-
-@media (prefers-color-scheme: dark) {
-  #add-todo {
-    border-color: $todo-border-color-dark;
-    background-color: $todo-background-color-dark;
-    box-shadow: 6px 6px 6px 1px $todo-box-shadow-color-dark;
-  }
-  #insert {
-    color: $insert-color-dark;
-  }
-  #insert:hover {
-    color: $insert-color-dark-hover;
-  }
-}
-</style>

@@ -1,23 +1,7 @@
 <template>
-  <nav id="navbar"><a id="headerLink" href="https://github.com/CQBerry/Todos"><h1>/ Todos! /</h1></a></nav>
+  <nav id="navbar" class='text-center my-5'>
+    <a id="headerLink"
+       class="font-mono no-underline text-black dark:text-stone-100 select-none text-2xl"
+       href="https://github.com/CQBerry/Todos">
+    <h1>/ Todos! /</h1></a></nav>
 </template>
-
-<style scoped lang="scss">
-@import "@/style/palette.scss";
-
-#navbar {
-  text-align: center;
-}
-
-#headerLink {
-  text-decoration: none;
-  color: $header-color-light;
-  user-select: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  #headerLink {
-    color: $header-color-dark;
-  }
-}
-</style>

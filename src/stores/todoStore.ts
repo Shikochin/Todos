@@ -4,7 +4,7 @@ import type { Todo } from "@/types";
 export const useStore = defineStore({
     id: "todoStore",
     state: () => ({
-        todos: <Todo[]>JSON.parse(localStorage.getItem('todos') as string) || [],
+        todos: <Todo[]>JSON.parse(localStorage.getItem('todos')!) || [],
         hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1',
         addedTodo: {
             todoTitle: 'Untitled',

@@ -1,5 +1,5 @@
 <template>
-  <p class="time"># {{ todoCreatedTime }}</p>
+  <p class="info dark:text-stone-100"># {{ todoCreatedTime }}</p>
 </template>
 
 <script lang="ts" setup>
@@ -11,9 +11,3 @@ const props = defineProps<{
 
 const todoCreatedTime = dayjs(props.todoId).format('MM/DD')
 </script>
-
-<style scoped>
-.time {
-  line-height: 0;
-}
-</style>

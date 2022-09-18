@@ -1,12 +1,4 @@
 @import "font.scss";
-@import "palette.scss";
-
-body {
-  background-color: $body-background-color-light;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: $body-background-color-dark;
-  }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,7 +1,9 @@
 <template>
-  <a id="toggle-hide" @click="todoStore.toggleHide()" v-show="!todoStore.hideCheckedTodos">😐 Toggle checked todos
+  <a v-show="!todoStore.hideCheckedTodos"
+     id="toggle-hide" class="font-mono select-none text-gray-500 hover:text-black dark:text-stone-100 dark:hover:text-gray-400 hover:cursor-pointer" @click="todoStore.toggleHide()">😐 Toggle checked todos
     visibility</a>
-  <a id="toggle-hide" @click="todoStore.toggleHide()" v-show="todoStore.hideCheckedTodos">🫥 Toggle checked todos
+  <a v-show="todoStore.hideCheckedTodos"
+     id="toggle-hide" class="font-mono select-none text-gray-500 hover:text-black dark:text-stone-100 dark:hover:text-gray-400 hover:cursor-pointer" @click="todoStore.toggleHide()">🫥 Toggle checked todos
     visibility</a>
 </template>
 
@@ -10,26 +12,3 @@ import { useStore } from "@/stores/todoStore";
 
 const todoStore = useStore()
 </script>
-
-<style scoped lang="scss">
-@import "@/style/palette.scss";
-
-#toggle-hide {
-  color: $functions-color-light;
-  user-select: none;
-}
-
-#toggle-hide:hover {
-  color: $functions-color-light-hover;
-  cursor: pointer;
-}
-
-@media (prefers-color-scheme: dark) {
-  #toggle-hide {
-    color: $functions-color-dark;
-  }
-  #toggle-hide:hover {
-    color: $functions-color-dark-hover;
-  }
-}
-</style>

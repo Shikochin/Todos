@@ -1,7 +1,7 @@
 <template>
-    <Navbar></Navbar>
-    <FunctionsBar></FunctionsBar>
-    <TodoList></TodoList>
+  <Navbar></Navbar>
+  <FunctionsBar></FunctionsBar>
+  <TodoList></TodoList>
 </template>
 
 <script lang="ts" setup>

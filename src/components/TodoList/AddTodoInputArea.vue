@@ -1,15 +1,37 @@
 <template>
   <h1>
-    <input class="input"
-           v-model.lazy="todoStore.addedTodo.todoTitle"
-           placeholder="Todo title (required)"
-           required
-           type="text"
+    <input
+        v-model.lazy="todoStore.addedTodo.todoTitle"
+        class="rounded-md
+               bg-todoLight
+               dark:bg-todoGray
+               border-black
+               dark:border-stone-100
+               border-dotted
+               border-2
+               dark:placeholder-blue-200
+               dark:text-stone-100
+               col-span-2
+               pl-0.5"
+        placeholder="Todo title (required)"
+        required
+        type="text"
     >
   </h1>
   <textarea
-      class="input desc"
       v-model.lazy="todoStore.addedTodo.todoDescription"
+      class="rounded-md
+             bg-todoLight
+             dark:bg-todoGray
+             border-black
+             dark:border-stone-100
+             border-dotted
+             border-2
+             dark:placeholder-blue-200
+             dark:text-stone-100
+             resize-none
+             col-span-3
+             pl-0.5"
       placeholder="Todo description"
   >
   </textarea>
@@ -20,35 +42,3 @@ import { useStore } from "@/stores/todoStore";
 
 const todoStore = useStore()
 </script>
-
-<style scoped lang="scss">
-@import "@/style/palette.scss";
-
-.input {
-  border-radius: 5px;
-  background-color: $todo-background-color-light;
-  border-color: $todo-border-color-light;
-  border-width: 2px;
-  border-style: dotted;
-}
-
-.desc {
-  resize: none;
-  width: 70%;
-  height: 50%;
-  margin-right: 10px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .input {
-    background-color: $todo-background-color-dark;
-    border-color: $todo-border-color-dark;
-    border-width: 2px;
-    border-style: dotted;
-    color: $text-color-dark;
-  }
-  .input::placeholder {
-    color: $text-placeholder-color-dark;
-  }
-}
-</style>
