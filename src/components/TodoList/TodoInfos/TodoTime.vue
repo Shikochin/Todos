@@ -1,5 +1,5 @@
 <template>
-  <p class="time text-slate-800 dark:text-stone-100"># {{ time }}</p>
+  <p class="time text-colors"># {{ time }}</p>
 </template>
 
 <script lang="ts" setup>
