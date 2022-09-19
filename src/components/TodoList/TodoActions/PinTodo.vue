@@ -1,5 +1,5 @@
 <template>
-  <a class="pin actions mr-[1em] text-sky-600 hover:text-sky-900 dark:text-sky-100 dark:hover:text-sky-200"
+  <a class="pin actions blue-action-colors"
      @click="todoStore.pinTodo(todoId)">📌 Pin</a>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <a class="delete actions mr-[1em] text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-500"
+  <a class="delete actions red-action-colors"
      @click="todoStore.deleteTodo(todoId)">❌ Delete</a>
 </template>
 

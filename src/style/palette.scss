@@ -1,0 +1,27 @@
+.todo-background-colors {
+  @apply bg-todo-light dark:bg-todo-dark
+}
+
+.border-colors {
+  @apply border-slate-800 dark:border-stone-100
+}
+
+.placeholder-colors {
+  @apply placeholder-gray-300 dark:placeholder-blue-200
+}
+
+.text-colors {
+  @apply text-slate-800 dark:text-stone-100
+}
+
+.green-action-colors {
+  @apply text-green-600 dark:text-green-300 hover:text-green-900 dark:hover:text-green-400
+}
+
+.red-action-colors {
+  @apply text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-500
+}
+
+.blue-action-colors {
+  @apply text-sky-600 hover:text-sky-900 dark:text-sky-100 dark:hover:text-sky-200
+}

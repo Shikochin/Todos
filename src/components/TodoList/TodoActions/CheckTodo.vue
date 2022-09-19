@@ -1,5 +1,5 @@
 <template>
-  <a class="check actions mr-[1em] text-green-600 dark:text-green-300 hover:text-green-900 dark:hover:text-green-400"
+  <a class="check actions green-action-colors"
      @click="todoStore.checkTodo(todoId)">{{ text }}</a>
 </template>
 

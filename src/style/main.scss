@@ -1,21 +1,8 @@
-@import "font.scss";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.shadows {
-  @apply shadow-xl shadow-indigo-900/20 dark:shadow-violet-600/20 hover:shadow-indigo-900/30 dark:hover:shadow-violet-600/30
-}
-
-.background-colors {
-  @apply bg-todoLight dark:bg-todoGray
-}
-
-.border-colors {
-  @apply border-black dark:border-stone-100
-}
-
-.actions {
-  @apply select-none hover:cursor-pointer
-}
+@import "common";
+@import "palette";
+@import "effects";
+@import "font";

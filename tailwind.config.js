@@ -7,14 +7,14 @@ module.exports = {
     theme: {
         extend: {
             gridTemplateColumns: {
-                'todo': 'repeat(auto-fit, minmax(400px, 1fr))'
+                todo: 'repeat(auto-fit, minmax(400px, 1fr))'
             },
             colors: {
-                todoLight: '#F5F5A0',
-                todoGray: '#737A7A'
+                'todo-light': '#F1F5F9',
+                'todo-dark': '#737A7A'
             },
             fontFamily: {
-                'mono': ['JetBrains Mono', 'Cascadia Code', 'Fira Code', 'monospace']
+                mono: ['JetBrains Mono', 'Cascadia Code', 'Fira Code', 'monospace']
             }
         },
     }

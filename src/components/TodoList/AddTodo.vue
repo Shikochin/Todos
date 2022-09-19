@@ -3,16 +3,16 @@
        class="grid
               gap-4
               p-6
-              font-mono
+              rounded-md
               border-dotted
               border-4
+              font-mono
               border-colors
-              background-colors
-              shadows
-              rounded-md">
+              todo-background-colors
+              shadows">
     <AddTodoInputArea></AddTodoInputArea>
     <a id="insert"
-       class="actions text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-400"
+       class="actions green-action-colors"
        @click="todoStore.addTodo()"
     >✒️ Insert</a>
   </div>
