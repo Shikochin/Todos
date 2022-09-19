@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from "@/stores/todoStore";
+import { useStore } from '@/stores/todoStore';
 import AddTodoInputArea from './AddTodoInputArea.vue'
 
 const todoStore = useStore()

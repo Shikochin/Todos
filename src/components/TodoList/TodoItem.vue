@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from "@/stores/todoStore";
+import { useStore } from '@/stores/todoStore';
 import PinTodo from './TodoActions/PinTodo.vue'
 import CheckTodo from './TodoActions/CheckTodo.vue'
 import DeleteTodo from './TodoActions/DeleteTodo.vue'

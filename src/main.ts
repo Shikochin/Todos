@@ -3,11 +3,11 @@ import { ViteSSG } from 'vite-ssg/single-page'
 import App from './App.vue'
 import './style/main.scss'
 
-export const createApp = ViteSSG(
+export default ViteSSG(
     App,
     ({app}) => {
-        const pinia = createPinia()
-        app.use(pinia)
+      const pinia = createPinia()
+      app.use(pinia)
     },
 )
 

@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from "@/stores/todoStore";
-import { computed } from "vue";
+import { useStore } from '@/stores/todoStore';
+import { computed } from 'vue';
 
 const todoStore = useStore()
 
