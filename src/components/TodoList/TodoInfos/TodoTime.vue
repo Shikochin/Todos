@@ -4,9 +4,6 @@
 
 <script lang="ts" setup>
 import dayjs from "dayjs";
-import { useStore } from "@/stores/todoStore";
-
-const todoStore = useStore()
 
 const props = defineProps<{
   todoCreatedTime: number
