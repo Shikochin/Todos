@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 export const useStore = defineStore({
   id: 'todoStore',
   state: () => ({
-    todos: <Todo[]>JSON.parse(localStorage.getItem('todos')!) || [],
+    todos: JSON.parse(localStorage.getItem('todos')!) as Todo[] || [],
     hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1',
     addedTodo: {
       todoTitle: 'Untitled',
@@ -28,7 +28,7 @@ export const useStore = defineStore({
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     addTodo() {
-      if (this.addedTodo.todoTitle.trim()) {
+      if (this.addedTodo.todoTitle.trim() !== '') {
         this.todos.push({
           todoId: nanoid(),
           todoCreatedTime: Date.now(),
