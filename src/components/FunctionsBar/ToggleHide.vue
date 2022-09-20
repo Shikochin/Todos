@@ -1,6 +1,6 @@
 <template>
   <a id="toggle-hide"
-     class="font-mono actions text-gray-500 hover:text-slate-800 dark:text-stone-100 dark:hover:text-gray-400"
+     class="font-mono actions function-colors"
      @click="todoStore.toggleHide()">{{ emoji }} Toggle checked todos visibility</a>
 </template>
 

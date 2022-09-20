@@ -25,3 +25,7 @@
 .blue-action-colors {
   @apply text-sky-600 hover:text-sky-900 dark:text-sky-100 dark:hover:text-sky-200
 }
+
+.function-colors {
+  @apply text-gray-500 hover:text-slate-800 dark:text-stone-100 dark:hover:text-gray-400
+}

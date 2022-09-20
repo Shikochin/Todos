@@ -1,5 +1,5 @@
 <template>
-  <nav id="func-nav" class="mb-2.5 grid ">
+  <nav id="func-nav" class="mb-2.5 grid">
     <ToggleHide></ToggleHide>
     <ToggleColorMode></ToggleColorMode>
   </nav>
