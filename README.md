@@ -5,6 +5,8 @@
 )
 ![last commit](https://img.shields.io/github/last-commit/CQBerry/Todos?style=for-the-badge)
 
+[![Star History Chart](https://api.star-history.com/svg?repos=CQBerry/Todos&type=Date)](https://star-history.com/#CQBerry/Todos&Date)
+
 ## Get started
 
 ```sh
