@@ -1,11 +1,11 @@
-import { defineStore } from 'pinia';
-import type { Todo } from '@/types';
-import { nanoid } from 'nanoid';
+import { defineStore } from 'pinia'
+import type { Todo } from '@/types'
+import { nanoid } from 'nanoid'
 
 export const useStore = defineStore({
   id: 'todoStore',
   state: () => ({
-    todos: JSON.parse(localStorage.getItem('todos')!) as Todo[] || [],
+    todos: JSON.parse(localStorage.getItem('todos') as string) as Todo[] | null ?? [],
     hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1',
     addedTodo: {
       todoTitle: 'Untitled',
@@ -34,7 +34,7 @@ export const useStore = defineStore({
           todoCreatedTime: Date.now(),
           todoTitle: this.addedTodo.todoTitle.trim(),
           todoDescription: this.addedTodo.todoDescription.trim(),
-          todoChecked: false,
+          todoChecked: false
         })
         this.addedTodo.todoTitle = 'Untitled'
         this.addedTodo.todoDescription = ''
@@ -56,4 +56,4 @@ export const useStore = defineStore({
       this.todos.unshift(pinnedTodo)
     }
   }
-});
+})
