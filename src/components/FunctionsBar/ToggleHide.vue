@@ -1,7 +1,5 @@
 <template>
-  <a id="toggle-hide"
-     class="font-mono actions function-colors"
-     @click="todoStore.toggleHide()">{{ emoji }} Toggle checked todos visibility</a>
+  <a id="toggle-hide" class="font-mono actions function-colors" @click="todoStore.toggleHide()">{{ emoji }} Toggle checked todos visibility</a>
 </template>
 
 <script lang="ts" setup>

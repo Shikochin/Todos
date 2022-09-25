@@ -1,7 +1,6 @@
 <template>
-  <a id="toggle-color-mode"
-     class="font-mono actions function-colors"
-     @click="toggleColorMode()">{{ emoji }} Toggle color mode</a>
+  <a id="toggle-color-mode" class="font-mono actions function-colors" @click="toggleColorMode()">{{ emoji }} Toggle
+    color mode</a>
 </template>
 
 <script lang="ts" setup>

@@ -1,11 +1,8 @@
 <template>
   <!-- add / delete / pin 动画 -->
   <TransitionGroup id="todo-list" class="grid gap-5 grid-cols-todo auto-rows-fr" name="list" tag="div">
-    <TodoItem
-        v-for="todo of (todoStore.hideCheckedTodos ? todoStore.uncheckedTodos : todoStore.todos)"
-        :key="todo.todoId"
-        :todo-id="todo.todoId"
-    ></TodoItem>
+    <TodoItem v-for="todo of (todoStore.hideCheckedTodos ? todoStore.uncheckedTodos : todoStore.todos)"
+      :key="todo.todoId" :todo-id="todo.todoId"></TodoItem>
     <AddTodo key="0"></AddTodo>
   </TransitionGroup>
 </template>

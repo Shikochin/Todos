@@ -1,6 +1,5 @@
 <template>
-  <div id="add-todo"
-       class="grid
+  <div id="add-todo" class="grid
               gap-4
               p-6
               rounded-md
@@ -11,10 +10,7 @@
               todo-background-colors
               shadows">
     <AddTodoInputArea></AddTodoInputArea>
-    <a id="insert"
-       class="actions green-action-colors"
-       @click="todoStore.addTodo()"
-    >✒️ Insert</a>
+    <a id="insert" class="actions green-action-colors" @click="todoStore.addTodo()">✒️ Insert</a>
   </div>
 </template>
 

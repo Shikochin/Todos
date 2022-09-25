@@ -1,6 +1,5 @@
 <template>
-  <a class="delete actions red-action-colors"
-     @click="todoStore.deleteTodo(todoId)">❌ Delete</a>
+  <a class="delete actions red-action-colors" @click="todoStore.deleteTodo(todoId)">❌ Delete</a>
 </template>
 
 <script lang="ts" setup>
