@@ -9,9 +9,9 @@
 import TitleBar from './components/TitleBar.vue'
 import FunctionsBar from './components/FunctionsBar/FunctionsBar.vue'
 import TodoList from './components/TodoList/TodoList.vue'
-import { useStore } from '@/stores/todoStore';
-import { useIdle } from '@vueuse/core';
-import { computed } from 'vue';
+import { useStore } from '@/stores/todoStore'
+import { useIdle } from '@vueuse/core'
+import { computed } from 'vue'
 
 // 离开页面时保存
 const todoStore = useStore()
