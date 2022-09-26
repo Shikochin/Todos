@@ -10,6 +10,7 @@
     "types": [
       "node"
     ],
-    "target": "ESNext"
+    "target": "ESNext",
+    "strict": true
   }
 }

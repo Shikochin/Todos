@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { Todo } from '@/types'
+import type Todo from '@/types'
 import { nanoid } from 'nanoid'
 
 export const useStore = defineStore({
@@ -16,18 +16,18 @@ export const useStore = defineStore({
     uncheckedTodos: (state) => state.todos.filter(todo => !todo.todoChecked)
   },
   actions: {
-    getTodo(id: string): [Todo, number] {
+    getTodo (id: string): [Todo, number] {
       const todoIndex = this.todos.findIndex(todo => todo.todoId === id)
       return [this.todos[todoIndex], todoIndex]
     },
-    toggleHide() {
+    toggleHide () {
       this.hideCheckedTodos = !this.hideCheckedTodos
       localStorage.setItem('hideCheckedTodos', this.hideCheckedTodos ? '1' : '0')
     },
-    updateTodo() {
+    updateTodo () {
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
-    addTodo() {
+    addTodo () {
       if (this.addedTodo.todoTitle.trim() !== '') {
         this.todos.push({
           todoId: nanoid(),
@@ -40,17 +40,17 @@ export const useStore = defineStore({
         this.addedTodo.todoDescription = ''
       }
     },
-    checkTodo(id: string) {
+    checkTodo (id: string) {
       const [checkedTodo] = this.getTodo(id)
       checkedTodo.todoChecked = !checkedTodo.todoChecked
     },
-    deleteTodo(id: string) {
+    deleteTodo (id: string) {
       if (confirm('Confirm to delete?')) {
         const [, deletedTodoIndex] = this.getTodo(id)
         this.todos.splice(deletedTodoIndex, 1)
       }
     },
-    pinTodo(id: string) {
+    pinTodo (id: string) {
       const [pinnedTodo, pinnedTodoIndex] = this.getTodo(id)
       this.todos.splice(pinnedTodoIndex, 1)
       this.todos.unshift(pinnedTodo)
