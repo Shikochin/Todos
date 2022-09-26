@@ -8,5 +8,5 @@ import { computed } from 'vue'
 
 const todoStore = useStore()
 
-const emoji = computed(() => todoStore.hideCheckedTodos ? '🫥' : '😐')
+const emoji = computed(() => todoStore.hideCheckedTodos ? '😎' : '😐')
 </script>
