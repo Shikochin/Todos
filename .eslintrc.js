@@ -42,6 +42,5 @@ module.exports = {
             'error', 
             'never'
         ]
-    },
-    'ignorePatterns': ['./**/*.js']
+    }
 }
