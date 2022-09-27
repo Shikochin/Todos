@@ -4,11 +4,11 @@ import App from './App.vue'
 import './style/main.scss'
 
 export const createApp = ViteSSG(
-  App,
-  ({ app }) => {
-    const pinia = createPinia()
-    app.use(pinia)
-  }
+    App,
+    ({ app }) => {
+        const pinia = createPinia()
+        app.use(pinia)
+    }
 )
 
 console.log('😎 Todos! by CHINQ')

@@ -1,11 +1,12 @@
 {
   "name": "todos",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite-ssg build",
     "preview": "vite preview --port 4173",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint ./src/**/*.{ts,vue} --fix"
   },
   "dependencies": {
     "@vueuse/core": "^9.2.0",
@@ -15,11 +16,15 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.56",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/tsconfig": "^0.1.3",
     "@vueuse/head": "^0.7.9",
     "autoprefixer": "^10.4.11",
     "dayjs": "^1.11.5",
+    "eslint": "^8.24.0",
+    "eslint-plugin-vue": "^9.5.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.16",
     "sass": "^1.54.8",
