@@ -24,7 +24,6 @@ const { idle } = useIdle(5000)
 watch(idle, () => {
     if (idle.value) {
         todoStore.updateTodo()
-        console.log('updated')
     }
 })
 

@@ -11,4 +11,5 @@ export const createApp = ViteSSG(
     }
 )
 
+// eslint-disable-next-line no-console
 console.log('😎 Todos! by CHINQ')
