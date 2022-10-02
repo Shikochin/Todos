@@ -2,7 +2,7 @@
   "name": "todos",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 8080",
     "build": "vite-ssg build",
     "preview": "vite preview --port 4173",
     "type-check": "vue-tsc --noEmit",
@@ -15,6 +15,7 @@
     "vue": "^3.2.38"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^1.1.1",
     "@types/node": "^16.11.56",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",

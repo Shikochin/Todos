@@ -9,8 +9,6 @@ module.exports = {
         'plugin:vue/vue3-essential',
         'plugin:@typescript-eslint/recommended'
     ],
-    'overrides': [
-    ],
     'parser': 'vue-eslint-parser',
     'parserOptions': {
         'ecmaVersion': 'latest',
@@ -42,6 +40,8 @@ module.exports = {
             'error', 
             'never'
         ],
-        'no-console': 'error'
+        'no-console': 'error',
+        'camelcase': 'error',
+        'eqeqeq': 'error'
     }
 }
