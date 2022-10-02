@@ -45,10 +45,8 @@ export const useStore = defineStore({
             checkedTodo.todoChecked = !checkedTodo.todoChecked
         },
         deleteTodo(id: string) {
-            if (confirm('Confirm to delete?')) {
-                const [, deletedTodoIndex] = this.getTodo(id)
-                this.todos.splice(deletedTodoIndex, 1)
-            }
+            const [, deletedTodoIndex] = this.getTodo(id)
+            this.todos.splice(deletedTodoIndex, 1)
         },
         pinTodo(id: string) {
             const [pinnedTodo, pinnedTodoIndex] = this.getTodo(id)
