@@ -23,7 +23,9 @@
       },
       "externalBin": [],
       "icon": [
-        "icons/icon.ico"
+        "icons/icon.ico",
+        "icons/icon.icns",
+        "icons/icon.png"
       ],
       "identifier": "com.chinq.todos",
       "longDescription": "",
@@ -55,7 +57,8 @@
         "height": 600,
         "resizable": true,
         "title": "Todos!",
-        "width": 1000
+        "width": 1000,
+        "center": true
       }
     ]
   }

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import type Todo from '@/types'
 import { nanoid } from 'nanoid'
+import { ask } from '@tauri-apps/api/dialog'
 
 export const useStore = defineStore({
     id: 'todoStore',
@@ -44,9 +45,16 @@ export const useStore = defineStore({
             const [checkedTodo] = this.getTodo(id)
             checkedTodo.todoChecked = !checkedTodo.todoChecked
         },
-        deleteTodo(id: string) {
-            const [, deletedTodoIndex] = this.getTodo(id)
-            this.todos.splice(deletedTodoIndex, 1)
+        async deleteTodo(id: string) {
+            if(window.__TAURI_IPC__ !== undefined){
+                if(await ask('Confirm to delete this todo?')){
+                    const [, deletedTodoIndex] = this.getTodo(id)
+                    this.todos.splice(deletedTodoIndex, 1) 
+                }
+            }else if(confirm('Confirm to delete this todo?')){
+                const [, deletedTodoIndex] = this.getTodo(id)
+                this.todos.splice(deletedTodoIndex, 1)
+            }
         },
         pinTodo(id: string) {
             const [pinnedTodo, pinnedTodoIndex] = this.getTodo(id)
