@@ -1,7 +1,9 @@
 <template>
-  <TitleBar></TitleBar>
-  <FunctionsBar></FunctionsBar>
-  <TodoList></TodoList>
+    <client-only>
+        <TitleBar></TitleBar>
+        <FunctionsBar></FunctionsBar>
+        <TodoList></TodoList>
+    </client-only>
 </template>
 
 <script lang="ts" setup>

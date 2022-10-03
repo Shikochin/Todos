@@ -3,6 +3,8 @@ import type Todo from '@/types'
 import { nanoid } from 'nanoid'
 import { ask } from '@tauri-apps/api/dialog'
 
+const isTauri = import.meta.env.VITE_IS_TAURI === '1'
+
 export const useStore = defineStore({
     id: 'todoStore',
     state: () => ({
@@ -46,8 +48,8 @@ export const useStore = defineStore({
             checkedTodo.todoChecked = !checkedTodo.todoChecked
         },
         async deleteTodo(id: string) {
-            if(window.__TAURI_IPC__ !== undefined){
-                if(await ask('Confirm to delete this todo?')){
+            if(isTauri){
+                if(await ask('Confirm to delete this todo?', {type:'warning', title:'Are you sure?'})){
                     const [, deletedTodoIndex] = this.getTodo(id)
                     this.todos.splice(deletedTodoIndex, 1) 
                 }
