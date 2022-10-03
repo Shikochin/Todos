@@ -48,12 +48,11 @@ export const useStore = defineStore({
             checkedTodo.todoChecked = !checkedTodo.todoChecked
         },
         async deleteTodo(id: string) {
-            if(isTauri){
-                if(await ask('Confirm to delete this todo?', {type:'warning', title:'Are you sure?'})){
-                    const [, deletedTodoIndex] = this.getTodo(id)
-                    this.todos.splice(deletedTodoIndex, 1) 
-                }
-            }else if(confirm('Confirm to delete this todo?')){
+            const tip = 'Confirm to delete this todo?'
+            const result = isTauri 
+                ? await ask(tip, { type:'warning', title:'Todos!' }) 
+                : confirm(tip)
+            if(result){
                 const [, deletedTodoIndex] = this.getTodo(id)
                 this.todos.splice(deletedTodoIndex, 1)
             }
