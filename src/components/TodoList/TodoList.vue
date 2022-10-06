@@ -1,5 +1,5 @@
 <template>
-    <TransitionGroup id="todo-list" class="grid gap-5 grid-cols-todo auto-rows-fr" name="list" tag="div">
+    <TransitionGroup id="todo-list" class="grid gap-5 grid-cols-todo auto-rows-fr" name="list" tag="main">
         <TodoItem v-for="todo of (todoStore.hideCheckedTodos ? todoStore.uncheckedTodos : todoStore.todos)"
             :key="todo.todoId" :todo-id="todo.todoId"></TodoItem>
         <AddTodo key="0"></AddTodo>

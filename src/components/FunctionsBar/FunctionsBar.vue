@@ -1,8 +1,8 @@
 <template>
-  <nav id="func-nav" class="mb-2.5 grid">
-    <ToggleHide></ToggleHide>
-    <ToggleColorMode></ToggleColorMode>
-  </nav>
+    <nav id="funcs-nav" class="mb-2.5 grid">
+        <ToggleHide></ToggleHide>
+        <ToggleColorMode></ToggleColorMode>
+    </nav>
 </template>
 
 <script lang="ts" setup>

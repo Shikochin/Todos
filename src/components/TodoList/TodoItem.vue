@@ -15,9 +15,11 @@
         : 'none'
         }" class="text-colors text-4xl mt-2 mb-4 truncate">{{ todo.todoTitle }}</h1>
         <p class="text-colors mb-4 truncate">{{ todo.todoDescription || todo.todoTitle }}</p>
-        <PinTodo :todo-id="todoId"></PinTodo>
-        <CheckTodo :todo="todo"></CheckTodo>
-        <DeleteTodo :todo-id="todoId"></DeleteTodo>
+        <menu>
+            <PinTodo :todo-id="todoId"></PinTodo>
+            <CheckTodo :todo="todo"></CheckTodo>
+            <DeleteTodo :todo-id="todoId"></DeleteTodo>
+        </menu>
     </section>
 </template>
 

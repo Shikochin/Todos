@@ -1,5 +1,5 @@
 <template>
-  <div id="add-todo" class="grid
+    <section id="add-todo" class="grid
               gap-4
               p-6
               rounded-md
@@ -9,9 +9,9 @@
               border-colors
               todo-background-colors
               shadows">
-    <AddTodoInputArea></AddTodoInputArea>
-    <a id="insert" class="actions green-action-colors" @click="todoStore.addTodo()">✒️ Insert</a>
-  </div>
+        <AddTodoInputArea></AddTodoInputArea>
+        <a id="insert" class="actions green-action-colors" @click="todoStore.addTodo()">✒️ Insert</a>
+    </section>
 </template>
 
 <script lang="ts" setup>

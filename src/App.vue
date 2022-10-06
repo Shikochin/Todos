@@ -1,7 +1,9 @@
 <template>
     <client-only>
-        <TitleBar></TitleBar>
-        <FunctionsBar></FunctionsBar>
+        <header>
+            <TitleBar></TitleBar>
+            <FunctionsBar></FunctionsBar>
+        </header>
         <TodoList></TodoList>
     </client-only>
 </template>

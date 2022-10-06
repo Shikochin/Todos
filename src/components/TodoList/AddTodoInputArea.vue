@@ -4,7 +4,7 @@
     <textarea v-model.lazy="addedTodo.todoDescription" class="inputs
              resize-none
              col-span-3" placeholder="Todo description">
-  </textarea>
+    </textarea>
 </template>
 
 <script lang="ts" setup>
