@@ -1,15 +1,12 @@
-import { createPinia } from 'pinia'
-import { ViteSSG } from 'vite-ssg/single-page'
 import App from './App.vue'
+import { createApp } from 'vue'
 import './style/main.scss'
+import { createPinia } from 'pinia'
 
-export const createApp = ViteSSG(
-    App,
-    ({ app }) => {
-        const pinia = createPinia()
-        app.use(pinia)
-    }
-)
+const app = createApp(App)
+const pinia = createPinia()
+app.use(pinia)
+app.mount('#app')
 
 // eslint-disable-next-line no-console
 console.log('😎 Todos! by CHINQ')

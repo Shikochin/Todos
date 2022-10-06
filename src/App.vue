@@ -1,11 +1,9 @@
 <template>
-    <client-only>
-        <header>
-            <TitleBar></TitleBar>
-            <FunctionsBar></FunctionsBar>
-        </header>
-        <TodoList></TodoList>
-    </client-only>
+    <header>
+        <TitleBar></TitleBar>
+        <FunctionsBar></FunctionsBar>
+    </header>
+    <TodoList></TodoList>
 </template>
 
 <script lang="ts" setup>
