@@ -1,7 +1,7 @@
 <template>
-  <input v-model.lazy="todoStore.addedTodo.todoTitle" class="inputs
+    <input v-model.lazy="addedTodo.todoTitle" class="inputs
              col-span-2" placeholder="Todo title (required)" required type="text">
-  <textarea v-model.lazy="todoStore.addedTodo.todoDescription" class="inputs
+    <textarea v-model.lazy="addedTodo.todoDescription" class="inputs
              resize-none
              col-span-3" placeholder="Todo description">
   </textarea>
@@ -11,4 +11,6 @@
 import { useStore } from '@/stores/todoStore'
 
 const todoStore = useStore()
+
+const { addedTodo } = todoStore
 </script>

@@ -43,9 +43,8 @@ export const useStore = defineStore({
                 this.addedTodo.todoDescription = ''
             }
         },
-        checkTodo(id: string) {
-            const [checkedTodo] = this.getTodo(id)
-            checkedTodo.todoChecked = !checkedTodo.todoChecked
+        checkTodo(todo: Todo) {
+            todo.todoChecked = !todo.todoChecked
         },
         async deleteTodo(id: string) {
             const tip = 'Confirm to delete this todo?'
