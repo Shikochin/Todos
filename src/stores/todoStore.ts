@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type Todo from '@/types'
 import { nanoid } from 'nanoid'
-import { ask } from '@tauri-apps/api/dialog'
+import { ask, message } from '@tauri-apps/api/dialog'
 
 const isTauri = import.meta.env.VITE_IS_TAURI === '1'
 
@@ -41,6 +41,9 @@ export const useStore = defineStore({
                 })
                 this.addedTodo.todoTitle = 'Untitled'
                 this.addedTodo.todoDescription = ''
+            }else {
+                const tip = 'Please fill in the todo title'
+                isTauri ? message(tip, { type:'warning', title:'Todos!' }) : alert(tip)
             }
         },
         checkTodo(todo: Todo) {
