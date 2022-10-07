@@ -5,12 +5,3 @@
 .inputs {
   @apply outline-none rounded-md todo-background-colors border-colors border-dotted border-2 placeholder-colors text-colors focus:border-sky-400 p-1
 }
-
-//.floats {
-//  transition: all 150ms cubic-bezier(.02, .01, .5, 1);
-//}
-//
-//.floats:hover {
-//  transition: all 250ms cubic-bezier(.02, .01, .5, 1);
-//  @apply -translate-y-1
-//}
