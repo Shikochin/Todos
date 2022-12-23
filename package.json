@@ -22,7 +22,7 @@
     "@typescript-eslint/parser": "^5.38.1",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/tsconfig": "^0.1.3",
-    "@vueuse/head": "^0.7.9",
+    "@vueuse/head": "^1.0.22",
     "autoprefixer": "^10.4.11",
     "dayjs": "^1.11.5",
     "eslint": "^8.24.0",
