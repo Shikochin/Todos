@@ -3,6 +3,9 @@ name: deploy
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - '.github/**'
+      - 'package.json'
 
 jobs:
   build-and-deploy:
