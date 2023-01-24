@@ -8,4 +8,4 @@ const pinia = createPinia()
 createApp(App).use(pinia).mount('#app')
 
 // eslint-disable-next-line no-console
-console.log('😎 Todos! by CHINQ')
+console.log('😎 Todos! by CQBerry')
