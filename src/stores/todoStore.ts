@@ -1,31 +1,35 @@
 import { defineStore } from 'pinia'
 import type Todo from '@/types'
 import { nanoid } from 'nanoid'
-import { ask, message } from '@tauri-apps/api/dialog'
-
-const isTauri = import.meta.env.VITE_IS_TAURI === '1'
 
 export const useStore = defineStore({
     id: 'todoStore',
     state: () => ({
-        todos: JSON.parse(localStorage.getItem('todos') as string) as Todo[] | null ?? [],
+        todos:
+            (JSON.parse(localStorage.getItem('todos') as string) as
+                | Todo[]
+                | null) ?? [],
         hideCheckedTodos: localStorage.getItem('hideCheckedTodos') === '1',
         addedTodo: {
             todoTitle: 'Untitled',
-            todoDescription: ''
-        }
+            todoDescription: '',
+        },
     }),
     getters: {
-        uncheckedTodos: (state) => state.todos.filter(todo => !todo.todoChecked)
+        uncheckedTodos: (state) =>
+            state.todos.filter((todo) => !todo.todoChecked),
     },
     actions: {
         getTodo(id: string): [Todo, number] {
-            const todoIndex = this.todos.findIndex(todo => todo.todoId === id)
+            const todoIndex = this.todos.findIndex((todo) => todo.todoId === id)
             return [this.todos[todoIndex], todoIndex]
         },
         toggleHide() {
             this.hideCheckedTodos = !this.hideCheckedTodos
-            localStorage.setItem('hideCheckedTodos', this.hideCheckedTodos ? '1' : '0')
+            localStorage.setItem(
+                'hideCheckedTodos',
+                this.hideCheckedTodos ? '1' : '0'
+            )
         },
         updateTodo() {
             localStorage.setItem('todos', JSON.stringify(this.todos))
@@ -37,13 +41,13 @@ export const useStore = defineStore({
                     todoCreatedTime: Date.now(),
                     todoTitle: this.addedTodo.todoTitle.trim(),
                     todoDescription: this.addedTodo.todoDescription.trim(),
-                    todoChecked: false
+                    todoChecked: false,
                 })
                 this.addedTodo.todoTitle = 'Untitled'
                 this.addedTodo.todoDescription = ''
-            }else {
+            } else {
                 const tip = 'Please fill in the todo title'
-                isTauri ? message(tip, { type:'warning', title:'Todos!' }) : alert(tip)
+                alert(tip)
             }
         },
         checkTodo(todo: Todo) {
@@ -51,10 +55,8 @@ export const useStore = defineStore({
         },
         async deleteTodo(id: string) {
             const tip = 'Confirm to delete this todo?'
-            const result = isTauri 
-                ? await ask(tip, { type:'warning', title:'Todos!' }) 
-                : confirm(tip)
-            if(result){
+            const result = confirm(tip)
+            if (result) {
                 const [, deletedTodoIndex] = this.getTodo(id)
                 this.todos.splice(deletedTodoIndex, 1)
             }
@@ -63,6 +65,6 @@ export const useStore = defineStore({
             const [pinnedTodo, pinnedTodoIndex] = this.getTodo(id)
             this.todos.splice(pinnedTodoIndex, 1)
             this.todos.unshift(pinnedTodo)
-        }
-    }
+        },
+    },
 })
